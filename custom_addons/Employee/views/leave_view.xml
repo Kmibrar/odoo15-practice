@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="leave_view_form" model="ir.ui.view">
+            <field name="name">employee_view_form</field>
+            <field name="model">employee.leave</field>
+            <field name="arch" type="xml">
+                <form string="employee_form">
+                    <sheet>
+                        <group>
+                        <group>
+                            <field name="leave_id"/>
+                            <field name="emp_id"/>
+                            <field name="Date"/>
+                            <field name="reason"/>
+                        </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="leave_view_tree" model="ir.ui.view">
+            <field name="name">leave_view_tree</field>
+            <field name="model">employee.leave</field>
+            <field name="arch" type="xml">
+                <tree string="leave_tree">
+                    <field name="leave_id"/>
+                    <field name="emp_id"/>
+                    <field name="Date"/>
+                    <field name="reason"/>
+                </tree>
+            </field>
+        </record>
+        <record id="leave_action" model="ir.actions.act_window">
+            <field name="name">leave.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.leave</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="leave_menu" name="Leave detail" sequence="6" parent="employee_menu_root" action="leave_action"/>
+    </data>
+</odoo>

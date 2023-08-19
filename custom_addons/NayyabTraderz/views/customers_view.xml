@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customer_view_form" model="ir.ui.view">
+            <field name="name">user_view_form</field>
+            <field name="model">nt.customer</field>
+            <field name="arch" type="xml">
+                <form string="customer_form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="customer_id"/>
+                                <field name="user_id"/>
+                                <field name="fname"/>
+                                <field name="lname"/>
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="phone_no"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="customer_view_tree" model="ir.ui.view">
+            <field name="name">user_view_tree</field>
+            <field name="model">nt.customer</field>
+            <field name="arch" type="xml">
+                <tree string="user_tree">
+                    <field name="customer_id"/>
+                    <field name="user_id"/>
+                    <field name="fname"/>
+                    <field name="lname"/>
+                    <field name="address"/>
+                    <field name="phone_no"/>
+                </tree>
+            </field>
+        </record>
+        <record id="customer_action_view" model="ir.actions.act_window">
+            <field name="name">User Registration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nt.customer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="customer_menu" name="Customer" parent="NTuser_root_menu" sequence="1"
+                  action="customer_action_view"/>
+    </data>
+</odoo>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="orders_view_form" model="ir.ui.view">
+            <field name="name">Order Form</field>
+            <field name="model">nt.order</field>
+            <field name="arch" type="xml">
+                <form string="user_form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                            <group>
+                                <field name="order_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page>
+                                <tree editable="bottom">
+                                    <field name="order_id"/></tree>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="orders_view_tree" model="ir.ui.view">
+            <field name="name">order_view_tree</field>
+            <field name="model">nt.order</field>
+            <field name="arch" type="xml">
+                <tree string="order_tree">
+                    <field name="order_id"/>
+                    <field name="partner_id"/>
+                    <field name="order_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="order_view_search" model="ir.ui.view">
+            <field name="name">order_view_search</field>
+            <field name="model">nt.order</field>
+            <field name="arch" type="xml">
+                <search string="user_search">
+                    <field name="order_id"/>
+                    <field name="partner_id"/>
+                    <field name="order_date"/>
+                </search>
+            </field>
+        </record>
+        <record id="order_action_view" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nt.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="NT_order_menu" name="Order" parent="NTuser_root_menu" sequence="1"
+                  action="order_action_view"/>
+
+    </data>
+</odoo>

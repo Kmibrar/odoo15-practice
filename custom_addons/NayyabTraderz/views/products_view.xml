@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="products_view_form" model="ir.ui.view">
+            <field name="name">Products Form</field>
+            <field name="model">nt.product</field>
+            <field name="arch" type="xml">
+                <form string="user_form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="qty_available"/>
+                            </group>
+                            <group>
+                                <field name="list_price"/>
+                                <field name="create_date"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh':'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="Products_view_tree" model="ir.ui.view">
+            <field name="name">user_view_tree</field>
+            <field name="model">nt.product</field>
+            <field name="arch" type="xml">
+                <tree string="user_tree" editable="bottom">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="qty_available"/>
+                    <field name="list_price"/>
+                    <field name="create_date"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+                <record id="Products_view_search" model="ir.ui.view">
+            <field name="name">user_view_search</field>
+            <field name="model">nt.product</field>
+            <field name="arch" type="xml">
+                <search string="user_search">
+                    <field name="product_id"/>
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+        <record id="products_action_view" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nt.product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="NT_product_menu" name="Products" parent="NTuser_root_menu" sequence="1"
+                  action="products_action_view"/>
+
+<!--        <menuitem id="NT_product_root_menu" name="Products_details" parent="NT_product_menu" sequence="1"-->
+<!--                  action="sale.product_template_action"/>-->
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="order_items_view_form" model="ir.ui.view">
+            <field name="name">order_items_view_form</field>
+            <field name="model">nt.order.items</field>
+            <field name="arch" type="xml">
+                <form string="order_items_form">
+                    <sheet>
+                        <group>
+                            <field name="order_no"/>
+                            <field name="customer_name"/>
+                        </group>
+                        <notebook>
+                            <page string="Bill" name="bill" editable="bottom">
+                                <tree editable="bottom">
+                                    <field name="my_order_id"/>
+                                </tree>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="order_items_action_view" model="ir.actions.act_window">
+            <field name="name">Orders Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nt.order.items</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="NT_orders_items_menu" name="Order Items" parent="NTuser_root_menu" sequence="1"
+                  action="order_items_action_view"/>
+    </data>
+</odoo>
